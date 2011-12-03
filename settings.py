@@ -121,7 +121,6 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'vehialpes.rest',
     'vehialpes.tastypie',
-    'django_extensions'
 )
 
 # A sample logging configuration. The only tangible logging
