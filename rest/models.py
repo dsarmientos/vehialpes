@@ -3,6 +3,13 @@ from django.db import models
 class Ciudad(models.Model):
     nombre = models.CharField(max_length=200)
 
+class Cita(models.Model):
+    vehiculo = models.ForeignKey('Vehiculo')
+    taller = models.ForeignKey('Taller')
+    tipo_transporte_entrega = models.ForeignKey('TipoTransporte', related_name='+')
+    tipo_transporte_recepcion = models.ForeignKey('TipoTransporte', related_name='+')
+    fecha = models.DateTimeField()
+    
 
 class Cliente(models.Model):
     nombre = models.CharField(max_length=200)
@@ -26,7 +33,6 @@ class Evidencia(models.Model):
     media = models.URLField(verify_exists=False, null=True)
 
 class Mantenimiento(models.Model):
-    cliente = models.ForeignKey('Cliente')
     vehiculo = models.ForeignKey('Vehiculo')
     taller = models.ForeignKey('Taller')
     diagnostico = models.TextField(blank=True)
@@ -35,6 +41,7 @@ class Mantenimiento(models.Model):
     consumibles = models.ManyToManyField('Consumible')
     respuestos = models.ManyToManyField('Repuesto')
     evidencias = models.ManyToManyField('Evidencia')
+    cita = models.ForeignKey('Cita')
 
 
 class Servicio(models.Model):
@@ -64,3 +71,8 @@ class Repuesto(models.Model):
     referencia = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)
     precio = models.DecimalField(null=True, max_digits=8, decimal_places=2)
+
+
+class TipoTransporte(models.Model):
+    nombre = models.CharField(max_length=200)
+    descripcion = models.TextField(blank=True)

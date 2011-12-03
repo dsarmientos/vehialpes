@@ -5,13 +5,15 @@ Created on 25/11/2011
 '''
 from tastypie.resources import ModelResource
 from tastypie.authentication import BasicAuthentication
-from tastypie.authorization import DjangoAuthorization
+from tastypie.authorization import Authorization
 from rest.models import *
 
 
 class TallerResource(ModelResource):
     class Meta:
         queryset = Taller.objects.all()
+        authentication = BasicAuthentication()
+        authorization = Authorization()
 
 class ClienteResource(ModelResource):
     class Meta:
@@ -20,6 +22,8 @@ class ClienteResource(ModelResource):
 class CiudadResource(ModelResource):
     class Meta:
         queryset = Ciudad.objects.all()
+        authentication = BasicAuthentication()
+        authorization = Authorization()
 
 class ConsumibleResource(ModelResource):
     class Meta:
