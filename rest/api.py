@@ -3,11 +3,11 @@ Created on 25/11/2011
 
 @author: Daniel Sarmiento <d.sarmiento85@uniandes.edu.co>
 '''
+
 from tastypie.resources import ModelResource
 from tastypie.authentication import BasicAuthentication
 from tastypie.authorization import Authorization
 from rest.models import *
-
 
 class TallerResource(ModelResource):
     class Meta:
@@ -24,7 +24,7 @@ class CiudadResource(ModelResource):
         queryset = Ciudad.objects.all()
         authentication = BasicAuthentication()
         authorization = Authorization()
-
+    
 class ConsumibleResource(ModelResource):
     class Meta:
         queryset = Consumible.objects.all()

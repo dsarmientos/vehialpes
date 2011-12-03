@@ -64,6 +64,7 @@ class Vehiculo(models.Model):
     placa = models.CharField(max_length=6)
     cliente = models.ForeignKey('Cliente')
     modelo = models.IntegerField()
+    foto = models.URLField(verify_exists=False, )
 
 
 class Repuesto(models.Model):
