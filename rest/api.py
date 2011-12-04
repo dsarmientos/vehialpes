@@ -48,9 +48,9 @@ class ServicioResource(ModelResource):
         queryset = Servicio.objects.all()
 
 class VehiculoResource(ModelResource):
+    cliente = tastypie.fields.ForeignKey(ClienteResource, 'cliente')
     class Meta:
         queryset = Vehiculo.objects.all()
-        cliente = tastypie.fields.ForeignKey(ClienteResource, 'cliente')
         filtering = {
             "placa": ALL,
         }
