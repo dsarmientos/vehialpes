@@ -48,6 +48,10 @@ class ServicioResource(ModelResource):
 class VehiculoResource(ModelResource):
     class Meta:
         queryset = Vehiculo.objects.all()
+        filtering = {
+            "placa": ALL,
+        }
+
 
 class RepuestoResource(ModelResource):
     class Meta:
