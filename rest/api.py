@@ -40,7 +40,6 @@ class EvidenciaResource(ModelResource):
         queryset = Evidencia.objects.all()
 
 class MantenimientoResource(ModelResource):
-    cliente = tastypie.fields.ForeignKey(ClienteResource, 'cliente')
     vehiculo = tastypie.fields.ForeignKey('rest.api.VehiculoResource', 'vehiculo')
     class Meta:
         queryset = Mantenimiento.objects.all()
