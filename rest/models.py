@@ -2,6 +2,9 @@ from django.db import models
 
 class Ciudad(models.Model):
     nombre = models.CharField(max_length=200)
+    
+    def __unicode__(self):
+        return self.nombre
 
 class Cita(models.Model):
     vehiculo = models.ForeignKey('Vehiculo')
@@ -9,6 +12,9 @@ class Cita(models.Model):
     tipo_transporte_entrega = models.ForeignKey('TipoTransporte', related_name='+')
     tipo_transporte_recepcion = models.ForeignKey('TipoTransporte', related_name='+')
     fecha = models.DateTimeField()
+    
+    def __unicode__(self):
+        return '-'.join((unicode(self.fecha), self.vehiculo.placa))
     
 
 class Cliente(models.Model):
@@ -21,16 +27,27 @@ class Cliente(models.Model):
     activo = models.BooleanField(default=True)
     ciudad = models.ForeignKey('Ciudad')
 
+    def __unicode__(self):
+        return self.nombre
+
 
 class Consumible(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField(blank=True)
     precio = models.DecimalField(null=True, max_digits=8, decimal_places=2)
 
+    def __unicode__(self):
+        return self.nombre
+
+
 class Evidencia(models.Model):
     titulo = models.CharField(max_length=80)
     observaciones = models.TextField(blank=True)
     media = models.URLField(verify_exists=False, null=True)
+
+    def __unicode__(self):
+        return self.media
+
 
 class Mantenimiento(models.Model):
     vehiculo = models.ForeignKey('Vehiculo')
@@ -43,11 +60,15 @@ class Mantenimiento(models.Model):
     evidencias = models.ManyToManyField('Evidencia')
     cita = models.ForeignKey('Cita')
 
+    def __unicode__(self):
+        return '-'.join((unicode(self.taller.nombre), self.vehiculo.placa))
 
 class Servicio(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField(blank=True)
 
+    def __unicode__(self):
+        return self.nombre
 
 class Taller(models.Model):
     nombre = models.CharField(max_length=200)
@@ -59,6 +80,8 @@ class Taller(models.Model):
     ciudad = models.ForeignKey('Ciudad')
     servicios = models.ManyToManyField('Servicio')
 
+    def __unicode__(self):
+        return self.nombre
 
 class Vehiculo(models.Model):
     placa = models.CharField(max_length=6)
@@ -66,6 +89,8 @@ class Vehiculo(models.Model):
     modelo = models.IntegerField()
     foto = models.URLField(verify_exists=False, )
 
+    def __unicode__(self):
+        return self.placa
 
 class Repuesto(models.Model):
     nombre = models.CharField(max_length=200)
@@ -73,7 +98,13 @@ class Repuesto(models.Model):
     descripcion = models.TextField(blank=True)
     precio = models.DecimalField(null=True, max_digits=8, decimal_places=2)
 
+    def __unicode__(self):
+        return self.nombre
+
 
 class TipoTransporte(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField(blank=True)
+
+    def __unicode__(self):
+        return self.nombre
