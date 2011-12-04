@@ -80,7 +80,7 @@ class PicoYPlaca(models.Model):
         (DIA_SABADO, 'Sabado'),
         (DIA_DOMINGO, 'Domingo'),
     )
-    ultimo_digito = models.IntegerField(unique=True)
+    ultimo_digito = models.IntegerField()
     dia_semana = models.CharField(choices=DIA_CHOICES, max_length='1')
 
     def __unicode__(self):
