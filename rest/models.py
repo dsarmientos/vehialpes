@@ -84,7 +84,7 @@ class PicoYPlaca(models.Model):
     dia_semana = models.CharField(choices=DIA_CHOICES, max_length='1')
 
     def __unicode__(self):
-        return '-'.join((self.ultimo_digito, self.dia_semana))
+        return '%d-%s' % (self.ultimo_digito, self.dia_semana)
 
 class Servicio(models.Model):
     nombre = models.CharField(max_length=200)
