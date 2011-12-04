@@ -5,7 +5,7 @@ Created on 25/11/2011
 '''
 
 from tastypie.resources import ModelResource
-from tastypie.constants import ALL
+from tastypie.constants import ALL, ALL_WITH_RELATIONS
 import tastypie.fields
 from tastypie.authentication import BasicAuthentication
 from tastypie.authorization import Authorization
@@ -69,8 +69,8 @@ class CitaResource(ModelResource):
     class Meta:
         queryset = Cita.objects.all()
         filtering = {
-            "taller": ALL,
-            "vehiculo": ALL
+            "taller": ALL_WITH_RELATIONS,
+            "vehiculo": ALL_WITH_RELATIONS
         }
 
 class TipoTransporteResource(ModelResource):
