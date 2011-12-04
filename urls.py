@@ -14,6 +14,8 @@ v1_api.register(MantenimientoResource())
 v1_api.register(ServicioResource())
 v1_api.register(VehiculoResource())
 v1_api.register(RepuestoResource())
+v1_api.register(CitaResource())
+v1_api.register(TipoTransporteResource())
 
 admin.autodiscover()
 

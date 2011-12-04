@@ -5,6 +5,7 @@ Created on 25/11/2011
 '''
 
 from tastypie.resources import ModelResource
+from tastypie.constants import ALL
 from tastypie.authentication import BasicAuthentication
 from tastypie.authorization import Authorization
 from rest.models import *
@@ -24,6 +25,9 @@ class CiudadResource(ModelResource):
         queryset = Ciudad.objects.all()
         authentication = BasicAuthentication()
         authorization = Authorization()
+        filtering = {
+            "nombre": ('exact', 'startswith',),
+        }
     
 class ConsumibleResource(ModelResource):
     class Meta:
@@ -48,3 +52,15 @@ class VehiculoResource(ModelResource):
 class RepuestoResource(ModelResource):
     class Meta:
         queryset = Repuesto.objects.all()
+
+class CitaResource(ModelResource):
+    class Meta:
+        queryset = Cita.objects.all()
+        filtering = {
+            "taller": ALL,
+            "vehiculo": ALL
+        }
+
+class TipoTransporteResource(ModelResource):
+    class Meta:
+        queryset = TipoTransporte.objects.all()
