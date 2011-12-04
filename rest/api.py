@@ -6,6 +6,7 @@ Created on 25/11/2011
 
 from tastypie.resources import ModelResource
 from tastypie.constants import ALL
+import tastypie.fields
 from tastypie.authentication import BasicAuthentication
 from tastypie.authorization import Authorization
 from rest.models import *
@@ -48,6 +49,7 @@ class ServicioResource(ModelResource):
 class VehiculoResource(ModelResource):
     class Meta:
         queryset = Vehiculo.objects.all()
+        cliente = tastypie.fields.ForeignKey(ClienteResource, 'cliente')
         filtering = {
             "placa": ALL,
         }
