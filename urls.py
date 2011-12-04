@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'vehialpes.rest.views.main', name='home'),
      (r'^api/', include(v1_api.urls)),
+     (r'^policy.xml', 'vehialpes.rest.views.policy'),
 
      url(r'^admin/', include(admin.site.urls)),
 )

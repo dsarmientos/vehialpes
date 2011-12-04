@@ -63,6 +63,7 @@ class RepuestoResource(ModelResource):
 
 class CitaResource(ModelResource):
     vehiculo = tastypie.fields.ForeignKey('rest.api.VehiculoResource', 'vehiculo', full=True)
+    taller = tastypie.fields.ForeignKey('rest.api.TallerResource', 'taller', full=True)
     tipo_transporte_entrega = tastypie.fields.ForeignKey('rest.api.TipoTransporteResource', 'tipo_transporte_entrega', full=True)
     tipo_transporte_recepcion = tastypie.fields.ForeignKey('rest.api.TipoTransporteResource', 'tipo_transporte_recepcion', full=True)
     class Meta:
