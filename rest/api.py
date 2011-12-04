@@ -20,6 +20,7 @@ class TallerResource(ModelResource):
 class ClienteResource(ModelResource):
     class Meta:
         queryset = Cliente.objects.all()
+        resource_name = 'cliente'
 
 class CiudadResource(ModelResource):
     class Meta:
