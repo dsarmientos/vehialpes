@@ -88,6 +88,11 @@ class Vehiculo(models.Model):
     cliente = models.ForeignKey('Cliente')
     modelo = models.IntegerField()
     foto = models.URLField(verify_exists=False, )
+    linea = models.CharField(max_length=80, null=True)
+    color = models.CharField(max_length=80, null=True)
+    tipo_caja = models.CharField(max_length=10, null=True)
+    motor = models.CharField(max_length=10, null=True)
+    marca = models.CharField(max_length=100, default='Marca X', null=True)
 
     def __unicode__(self):
         return self.placa
