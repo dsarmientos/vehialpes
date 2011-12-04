@@ -62,6 +62,9 @@ class RepuestoResource(ModelResource):
         queryset = Repuesto.objects.all()
 
 class CitaResource(ModelResource):
+    vehiculo = tastypie.fields.ForeignKey('rest.api.VehiculoResource', 'vehiculo')
+    tipo_transporte_entrega = tastypie.fields.ForeignKey('rest.api.TipoTransporteResource', 'tipotransporte')
+    tipo_transporte_recepcion = tastypie.fields.ForeignKey('rest.api.TipoTransporteResource', 'tipotransporte')
     class Meta:
         queryset = Cita.objects.all()
         filtering = {
