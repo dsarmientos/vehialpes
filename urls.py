@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'vehialpes.rest.views.main', name='home'),
      (r'^api/v1/picoyplaca/(?P<placa>[A-Za-z]{3}[0-9]{3})/$', 'vehialpes.rest.views.picoyplaca'),
+     (r'^api/v1/ingreso_post_venta/$', 'vehialpes.rest.views.ingreso_post_venta'),
      (r'^api/', include(v1_api.urls)),
 
      url(r'^admin/', include(admin.site.urls)),
