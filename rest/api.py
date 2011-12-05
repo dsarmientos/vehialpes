@@ -27,7 +27,7 @@ class ConcesionarioResource(ModelResource):
         queryset = Concesionario.objects.all()
         resource_name = 'concesionario'
         filtering = {
-            "servicios": ALL_WITH_RELATIONS,}
+            "nombre": ALL_WITH_RELATIONS,}
 
 class CiudadResource(ModelResource):
     class Meta:
