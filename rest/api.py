@@ -49,6 +49,10 @@ class MantenimientoResource(ModelResource):
         queryset = Mantenimiento.objects.all()
         authentication = BasicAuthentication()
         authorization = Authorization()
+        filtering = {
+            "servicio": ALL_WITH_RELATIONS,
+            "vehiculo": ALL_WITH_RELATIONS,
+        }
 
 class ServicioResource(ModelResource):
     class Meta:
