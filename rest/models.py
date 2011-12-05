@@ -113,6 +113,8 @@ class Taller(models.Model):
     rating = models.IntegerField(default=0)
     ciudad = models.ForeignKey('Ciudad')
     servicios = models.ManyToManyField('Servicio')
+    cord_x = models.FloatField(null=True, blank=True)
+    cord_y = models.FloatField(null=True, blank=True)
 
     def __unicode__(self):
         return self.nombre

@@ -64,6 +64,8 @@ class MantenimientoResource(ModelResource):
             "servicios": ALL_WITH_RELATIONS,
             "vehiculo": ALL_WITH_RELATIONS,
             "fecha": ALL,
+            "consumibles": ALL_WITH_RELATIONS,
+            "repuestos": ALL_WITH_RELATIONS,
         }
 
 class ServicioResource(ModelResource):
