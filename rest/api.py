@@ -34,19 +34,27 @@ class CiudadResource(ModelResource):
 class ConsumibleResource(ModelResource):
     class Meta:
         queryset = Consumible.objects.all()
+        authentication = BasicAuthentication()
+        authorization = Authorization()
 
 class EvidenciaResource(ModelResource):
     class Meta:
         queryset = Evidencia.objects.all()
+        authentication = BasicAuthentication()
+        authorization = Authorization()
 
 class MantenimientoResource(ModelResource):
     vehiculo = tastypie.fields.ForeignKey('rest.api.VehiculoResource', 'vehiculo')
     class Meta:
         queryset = Mantenimiento.objects.all()
+        authentication = BasicAuthentication()
+        authorization = Authorization()
 
 class ServicioResource(ModelResource):
     class Meta:
         queryset = Servicio.objects.all()
+        authentication = BasicAuthentication()
+        authorization = Authorization()
 
 class VehiculoResource(ModelResource):
     cliente = tastypie.fields.ForeignKey(ClienteResource, 'cliente', full=True)
@@ -55,11 +63,15 @@ class VehiculoResource(ModelResource):
         filtering = {
             "placa": ALL,
         }
+        authentication = BasicAuthentication()
+        authorization = Authorization()
 
 
 class RepuestoResource(ModelResource):
     class Meta:
         queryset = Repuesto.objects.all()
+        authentication = BasicAuthentication()
+        authorization = Authorization()
 
 class CitaResource(ModelResource):
     vehiculo = tastypie.fields.ForeignKey('rest.api.VehiculoResource', 'vehiculo', full=True)
@@ -72,7 +84,11 @@ class CitaResource(ModelResource):
             "taller": ALL_WITH_RELATIONS,
             "vehiculo": ALL_WITH_RELATIONS
         }
+        authentication = BasicAuthentication()
+        authorization = Authorization()
 
 class TipoTransporteResource(ModelResource):
     class Meta:
         queryset = TipoTransporte.objects.all()
+        authentication = BasicAuthentication()
+        authorization = Authorization()
