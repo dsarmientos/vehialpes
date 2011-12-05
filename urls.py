@@ -16,6 +16,7 @@ v1_api.register(VehiculoResource())
 v1_api.register(RepuestoResource())
 v1_api.register(CitaResource())
 v1_api.register(TipoTransporteResource())
+v1_api.register(ConcesionarioResource())
 
 admin.autodiscover()
 

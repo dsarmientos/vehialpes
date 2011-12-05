@@ -22,6 +22,11 @@ class ClienteResource(ModelResource):
         queryset = Cliente.objects.all()
         resource_name = 'cliente'
 
+class ConcesionarioResource(ModelResource):
+    class Meta:
+        queryset = Concesionario.objects.all()
+        resource_name = 'concesionario'
+
 class CiudadResource(ModelResource):
     class Meta:
         queryset = Ciudad.objects.all()
@@ -69,10 +74,13 @@ class ServicioResource(ModelResource):
 
 class VehiculoResource(ModelResource):
     cliente = tastypie.fields.ForeignKey(ClienteResource, 'cliente', full=True)
+    concesioniario = tastypie.fields.ForeignKey('rest.api.ConcesionarioResource', 'concesionario', full=True)
     class Meta:
         queryset = Vehiculo.objects.all()
         filtering = {
             "placa": ALL,
+            "cliente": ALL_WITH_RELATIONS,
+            "concesionario": ALL_WITH_RELATIONS,
         }
         authentication = BasicAuthentication()
         authorization = Authorization()

@@ -30,6 +30,13 @@ class Cliente(models.Model):
     def __unicode__(self):
         return self.nombre
 
+class Concesionario(models.Model):
+    nombre = models.CharField(max_length=200)
+    certificado = models.BooleanField(default=False)
+    
+    def __unicode__(self):
+        return self.nombre
+
 
 class Consumible(models.Model):
     nombre = models.CharField(max_length=200)
@@ -113,6 +120,7 @@ class Taller(models.Model):
 class Vehiculo(models.Model):
     placa = models.CharField(max_length=6)
     cliente = models.ForeignKey('Cliente')
+    concesionario = models.ForeignKey('Concesionario', null=True)
     modelo = models.IntegerField()
     foto = models.URLField(verify_exists=False, )
     linea = models.CharField(max_length=80, null=True)
