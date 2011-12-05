@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from rest.models import PicoYPlaca, Mantenimiento
+from rest.models import PicoYPlaca, Mantenimiento, Vehiculo
 from django.utils import simplejson
 
 def main(request):
@@ -19,6 +19,15 @@ def ingreso_post_venta(request):
     if request.method == 'GET':
         mantenimientos = Mantenimiento.objects.all()
         total = sum([m.precio for m in mantenimientos])
+        total = str(total)
+        json = simplejson.dumps({'total':total})
+        return HttpResponse(json, mimetype='application/json')
+    return HttpResponse(status=400)
+
+def ingreso_venta_vehiculos(request):
+    if request.method == 'GET':
+        vehiculos = Vehiculo.objects.all()
+        total = sum([v.precio_venta for v in vehiculos])
         total = str(total)
         json = simplejson.dumps({'total':total})
         return HttpResponse(json, mimetype='application/json')
