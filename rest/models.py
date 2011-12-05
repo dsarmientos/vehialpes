@@ -132,7 +132,8 @@ class Vehiculo(models.Model):
     marca = models.CharField(max_length=100, default='Marca X', null=True)
     fecha_compra = models.DateTimeField(auto_now_add=True, null=True)
     kilometraje = models.PositiveIntegerField(null=True, default=0)
-
+    precio_venta = models.DecimalField(null=True, max_digits=8, decimal_places=2)
+ 
     def __unicode__(self):
         return self.placa
 
