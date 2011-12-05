@@ -50,7 +50,7 @@ class MantenimientoResource(ModelResource):
     consumibles = tastypie.fields.ForeignKey('rest.api.ConsumibleResource', 'consumibles')
     repuestos = tastypie.fields.ForeignKey('rest.api.RepuestoResource', 'respuestos')
     evidencias = tastypie.fields.ForeignKey('rest.api.EvidenciaResource', 'evidencias')
-    servicios = tastypie.fields.ForeignKey('rest.api.ServiciosResource', 'servicios')
+    servicios = tastypie.fields.ForeignKey('rest.api.ServicioResource', 'servicios')
     class Meta:
         queryset = Mantenimiento.objects.all()
         authentication = BasicAuthentication()
