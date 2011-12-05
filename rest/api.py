@@ -45,6 +45,12 @@ class EvidenciaResource(ModelResource):
 
 class MantenimientoResource(ModelResource):
     vehiculo = tastypie.fields.ForeignKey('rest.api.VehiculoResource', 'vehiculo')
+    taller = tastypie.fields.ForeignKey('rest.api.TallerResource', 'taller')
+    cita = tastypie.fields.ForeignKey('rest.api.CitaResource', 'cita')
+    consumibles = tastypie.fields.ForeignKey('rest.api.ConsumibleResource', 'consumibles')
+    repuestos = tastypie.fields.ForeignKey('rest.api.RepuestoResource', 'respuestos')
+    evidencias = tastypie.fields.ForeignKey('rest.api.EvidenciaResource', 'evidencias')
+    servicios = tastypie.fields.ForeignKey('rest.api.ServiciosResource', 'servicios')
     class Meta:
         queryset = Mantenimiento.objects.all()
         authentication = BasicAuthentication()
