@@ -52,6 +52,7 @@ class MantenimientoResource(ModelResource):
         filtering = {
             "servicio": ALL_WITH_RELATIONS,
             "vehiculo": ALL_WITH_RELATIONS,
+            "fecha": ALL,
         }
 
 class ServicioResource(ModelResource):

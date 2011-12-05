@@ -62,6 +62,7 @@ class Mantenimiento(models.Model):
     cita = models.ForeignKey('Cita')
     kilometraje = models.PositiveIntegerField(null=True, default=0)
     precio = models.DecimalField(null=True, max_digits=8, decimal_places=2)
+    fecha = models.DateTimeField(null=True)
 
     def __unicode__(self):
         return '-'.join((unicode(self.taller.nombre), self.vehiculo.placa))
