@@ -56,7 +56,7 @@ class MantenimientoResource(ModelResource):
         authentication = BasicAuthentication()
         authorization = Authorization()
         filtering = {
-            "servicio": ALL_WITH_RELATIONS,
+            "servicios": ALL_WITH_RELATIONS,
             "vehiculo": ALL_WITH_RELATIONS,
             "fecha": ALL,
         }
