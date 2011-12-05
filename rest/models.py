@@ -55,10 +55,13 @@ class Mantenimiento(models.Model):
     diagnostico = models.TextField(blank=True)
     observaciones = models.TextField(blank=True)
     recomendaciones = models.TextField(blank=True)
-    consumibles = models.ManyToManyField('Consumible')
-    respuestos = models.ManyToManyField('Repuesto')
-    evidencias = models.ManyToManyField('Evidencia')
+    consumibles = models.ManyToManyField('Consumible', null=True)
+    respuestos = models.ManyToManyField('Repuesto', null=True)
+    evidencias = models.ManyToManyField('Evidencia', null=True)
+    servicios = models.ManyToManyField('Servicio', null=True)
     cita = models.ForeignKey('Cita')
+    kilometraje = models.PositiveIntegerField(null=True, default=0)
+    precio = models.DecimalField(null=True, max_digits=8, decimal_places=2)
 
     def __unicode__(self):
         return '-'.join((unicode(self.taller.nombre), self.vehiculo.placa))
