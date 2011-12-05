@@ -19,6 +19,6 @@ def ingreso_post_venta(request):
     if request.method == 'GET':
         mantenimientos = Mantenimiento.objects.all()
         total = sum([m.precio for m in mantenimientos])
-        json = simplejson.dumps({'total':total})
+        json = simplejson.dumps({'total':total}, use_decimal=True)
         return HttpResponse(json, mimetype='application/json')
     return HttpResponse(status=400)
