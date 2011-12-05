@@ -83,6 +83,7 @@ class VehiculoResource(ModelResource):
             "placa": ALL,
             "cliente": ALL_WITH_RELATIONS,
             "concesionario": ALL_WITH_RELATIONS,
+            "linea": ALL,
         }
         authentication = BasicAuthentication()
         authorization = Authorization()
