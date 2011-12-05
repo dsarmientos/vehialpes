@@ -27,7 +27,7 @@ def ingreso_post_venta(request):
 def ingreso_venta_vehiculos(request):
     if request.method == 'GET':
         vehiculos = Vehiculo.objects.all()
-        total = sum([v.precio_venta for v in vehiculos])
+        total = sum([v.precio_venta for v in vehiculos if v.precio_venta])
         total = str(total)
         json = simplejson.dumps({'total':total})
         return HttpResponse(json, mimetype='application/json')
