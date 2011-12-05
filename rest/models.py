@@ -117,6 +117,7 @@ class Vehiculo(models.Model):
     motor = models.CharField(max_length=10, null=True)
     marca = models.CharField(max_length=100, default='Marca X', null=True)
     fecha_compra = models.DateTimeField(auto_now_add=True, null=True)
+    kilometraje = models.PositiveIntegerField(null=True, default=0)
 
     def __unicode__(self):
         return self.placa
